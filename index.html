@@ -6,20 +6,21 @@
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
-  <body>
+  <body> 
 
 <div id="header">
   <div class="container">
       <nav>
         <img src="images/logo.png" class="logo">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">AboutMe</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Portfolio</a></li>
-          <li><a href="#">Contact</a></li>
+        <ul id="sidemenu">
+           <li><a href="#header">Home</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
         </ul>
+        <i class="fa-solid fa-bars" onclick="openmenu()"></i>
       </nav>
       <div class="header-text">
         <p>Software Engineer</p>
@@ -63,16 +64,16 @@
 
           <div class="tab-contents" id="experince">
             <ul>
-              <li><span>2023 - Current</span><br>Teaching Assistant</li>
-              <li><span>2021 - 2023</span><br>Software Engineer</li>
-              <li><span>2020 - 2021</span><br>Intern as Software Engineer</li>
+              <li><span>2023 - Current</span><br>Teaching Assistant at Hood College</li>
+              <li><span>2021 - 2023</span><br>Software Engineer at DXC Technology</li>
+              <li><span>2020 - 2021</span><br>Intern as Software Engineer at DXC Technology</li>
             </ul>
           </div>
 
           <div class="tab-contents" id="education">
             <ul>
               <li><span>2025</span><br>MS in Computer Science</li>
-              <li><span>2021</span><br>BS in Computer Science</li>
+              <li><span>2021</span><br>Bachelor's in Computer Science</li>
             </ul>
           </div>
 
@@ -80,6 +81,42 @@
     </div>
   </div>
 </div>
+
+<!----------Contact--------->
+
+<div id="contact">
+  <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fa-solid fa-paper-plane"></i>pranathireddy.jaggari@gmail.com</p>
+          <p><i class="fa-solid fa-square-phone"></i>5716041212</p>
+          <div class="social-icons">
+            <a href=""><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/JaggariPranathi"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/pranathi_jaggari__/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/pjr3/"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <a href="images/Pranathi_Resume.docx" download class="btn btn2">Download Resume</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="Email" placeholder="Your Email" required>
+            <textarea name="Message" rows="6" placeholder="Your Message" ></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+          </form>
+          <span id="msg">hello</span>
+        </div>
+      </div>
+  </div>
+
+  <div class="copyright">
+    <p>Pranathi Reddy Jaggari <i class="fa-solid fa-face-smile"></i></p>
+  </div>
+</div>
+
+
 
 <script>
 
@@ -97,6 +134,36 @@
     document.getElementById(tabname).classList.add("active-tab");
   }
 
+</script>
+<script>
+
+  var sidemen = document.getElementById("sidemenu");
+
+  function openmenu(){
+    sidemen.style.right = "0";
+  }
+  function closemenu(){
+    sidemen.style.right = "-200px";
+  }
+
+</script>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbz5r1IhNVxW2AGA6gndfSAGkD3PYIW0ty29vC3JpvEamHhfoIbizDMOIvy6LjXPvvTE/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML = "Message sent successfully"
+        setTimeout(function(){
+          msg.innerHTML = ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
 </script>
 
   </body> 
