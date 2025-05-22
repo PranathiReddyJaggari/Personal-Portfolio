@@ -9,5 +9,95 @@
   </head>
   <body>
 
+<div id="header">
+  <div class="container">
+      <nav>
+        <img src="images/logo.png" class="logo">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">AboutMe</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-text">
+        <p>Software Engineer</p>
+        <h1>Hi, I'm <span>Pranathi</span><br>Reddy Jaggari</h1>
+      </div>
+  </div>
+</div>
+
+<!-----about-------->
+ 
+<div id="about">
+  <div class="container">
+    <div class="row">
+      <div class="about-col-1">
+        <img src="images/user.jpg">
+      </div>
+      <div class="about-col-2">
+        <h1 class="sub-title">About Me</h1>
+        <p>I'm a passionate front-end developer exploring the 
+          world of JavaScript, React, and web development. 
+          I love creating beautiful, interactive, and user-friendly 
+          websites. Currently, I'm honing my skills in 
+          HTML, CSS, JavaScript, and React, building projects that bring 
+          ideas to life.
+          I enjoy solving challenges, learning new technologies, and constantly improving
+          my craft. My goal is to develop seamless and intuitive web 
+          experiences that make an impact.</p>
+
+        <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+            <p class="tab-links" onclick="opentab('experince')">Experince</p>
+            <p class="tab-links" onclick="opentab('education')">Education</p>
+        </div>
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>Frontend Development</span><br>Building interactive web apps</li>
+              <li><span>JavaScript & React</span><br>Creating UI components</li>
+              <li><span>App Development</span><br>Git & GitHub for collaboration</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="experince">
+            <ul>
+              <li><span>2023 - Current</span><br>Teaching Assistant</li>
+              <li><span>2021 - 2023</span><br>Software Engineer</li>
+              <li><span>2020 - 2021</span><br>Intern as Software Engineer</li>
+            </ul>
+          </div>
+
+          <div class="tab-contents" id="education">
+            <ul>
+              <li><span>2025</span><br>MS in Computer Science</li>
+              <li><span>2021</span><br>BS in Computer Science</li>
+            </ul>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  var tablinks = document.getElementsByClassName("tab-links");
+  var tabcontents = document.getElementsByClassName("tab-contents");
+
+  function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+      tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab");
+  }
+
+</script>
+
   </body> 
 </html>
